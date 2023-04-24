@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.headerLogo {
+  max-width: 100%;
+
+  svg path {
+    transition: fill 0.2s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    svg path:nth-child(1) {
+      fill: #8f43ee;
+    }
+
+    svg path:nth-child(2) {
+      fill: #fff200;
+    }
+  }
+}
+
+.headerNav {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.navButtonAdd,
+.navButtonFilter {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: scale 0.1s ease, opacity 0.1s ease;
+
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    scale: 0.95;
+  }
+
+  &:active {
+    scale: 0.9;
+    opacity: 0.9;
+  }
+}
+
+.navButtonAdd {
+  background-color: #8f43ee;
+}
+
+.navButtonFilter {
+  background-color: #3e3e3e;
+}

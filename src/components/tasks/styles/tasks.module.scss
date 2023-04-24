@@ -1,0 +1,225 @@
+.tasks {
+  width: 100%;
+}
+
+.taskPage {
+  margin-bottom: 1.5rem;
+}
+
+.task,
+.taskSkeleton {
+  display: flex;
+  padding: 1.25rem;
+
+  border-radius: 0.5rem;
+  background-color: #303030;
+  border: 0.125rem solid transparent;
+  box-shadow: 0px 0.5rem 0.75rem 0.25rem transparent;
+
+  transition-property: border-color, translate, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+
+  + & {
+    margin-top: 1rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: #8f43ee;
+    translate: 0rem -0.25rem 0rem;
+    box-shadow: 0px 1rem 0.75rem 0.25rem #00000020;
+  }
+
+  .taskHeader {
+    flex: 1;
+
+    h2,
+    p {
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    h2 {
+      font: 600 1rem 'Montserrat';
+    }
+
+    p {
+      font: 400 0.75rem 'Montserrat';
+    }
+
+    span {
+      font: 800 0.75rem 'Montserrat';
+      color: #fff200;
+    }
+  }
+}
+
+.taskSkeleton {
+  &:hover {
+    border-color: #404040;
+  }
+
+  animation: TASK_SHOW 0.4s ease;
+
+  .taskHeader {
+    flex: 1;
+
+    h2,
+    p {
+      margin-bottom: 0.5rem;
+      color: #fff;
+      color: #7c7c7c;
+    }
+
+    span {
+      color: #8f43ee;
+    }
+  }
+}
+
+.taskNav {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.taskNavButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.taskNavPages {
+  display: flex;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  gap: 1rem;
+
+  animation: NAV_PAGES_SHOW 0.6s ease;
+}
+
+.taskPageButton {
+  flex: 1;
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0.625rem;
+  line-height: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #3e3e3e;
+  transition: background-color 0.2s ease;
+
+  span {
+    font: 700 1rem 'Montserrat';
+    line-height: 1.5rem;
+    color: #222222;
+  }
+
+  &:global(.active) {
+    background-color: #8f43ee;
+    opacity: 1;
+  }
+}
+
+.navButton,
+.navLock,
+.navUnlock {
+  cursor: pointer;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  background-color: #3e3e3e;
+  flex: 1;
+
+  animation: BUTTON_SHOW 0.4s ease;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+  }
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+}
+
+.navButton {
+  transition-property: background-color, filter, scale;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+
+  &:hover {
+    background-color: #8f43ee;
+  }
+
+  &:active {
+    filter: brightness(0.85);
+    scale: 0.97;
+  }
+}
+
+.navLock,
+.navUnlock {
+  width: 100%;
+
+  border: 0.125rem solid transparent;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #fff200;
+  }
+}
+
+.navUnlock {
+  border-color: #fff200;
+
+  animation: UNLOCK_SHAKEN 2s ease-in-out infinite;
+}
+
+@keyframes UNLOCK_SHAKEN {
+  50% {
+    translate: 0rem 0rem 0rem;
+  }
+
+  55% {
+    translate: -0.5rem 0rem 0rem;
+  }
+
+  60% {
+    translate: 0.5rem 0rem 0rem;
+  }
+
+  65% {
+    translate: -0.5rem 0rem 0rem;
+  }
+
+  70% {
+    translate: 0.5rem 0rem 0rem;
+  }
+
+  75% {
+    translate: 0rem 0rem 0rem;
+  }
+}
+
+@keyframes TASK_SHOW {
+  from {
+    opacity: 0.5;
+    translate: 0px 0.5rem 0px;
+  }
+}
+
+@keyframes NAV_PAGES_SHOW {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 2.75rem;
+  }
+}
+
+@keyframes BUTTON_SHOW {
+  from {
+    scale: 0.9;
+  }
+}
