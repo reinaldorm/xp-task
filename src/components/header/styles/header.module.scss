@@ -61,7 +61,7 @@
   &:global(.activeStep) {
     z-index: 30;
     box-shadow: 0px 0px 80px 0px #8f43ee;
-    animation: SHAKE 2s ease 0s infinite;
+    animation: SHAKE 2s ease 0s infinite, GROW 2s ease 0s infinite;
   }
 }
 
@@ -84,5 +84,19 @@
 
   80% {
     rotate: z 0deg;
+  }
+}
+
+@keyframes GROW {
+  50% {
+    scale: 1;
+  }
+
+  60% {
+    scale: 1.1;
+  }
+
+  100% {
+    scale: 1;
   }
 }

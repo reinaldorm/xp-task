@@ -21,9 +21,12 @@
 }
 
 .tutorialContent {
-  z-index: 11;
+  z-index: 15;
   padding: 1.5rem;
   max-width: 350px;
+  position: absolute;
+
+  transition: top 1s ease;
 
   background-color: #222;
   border-radius: 0.5rem;
