@@ -6,6 +6,7 @@ import lock from '../svg/icon-lock.svg';
 import unlock from '../svg/icon-unlock.svg';
 import chevronLeft from '../svg/chevron-left.svg';
 import chevronRight from '../svg/chevron-right.svg';
+import arrowRight from '../svg/icon-arrow-right.svg';
 import xpLogo from '../svg/xp-logo.svg';
 
 const assets = {
@@ -17,6 +18,7 @@ const assets = {
   lock,
   chevronLeft,
   chevronRight,
+  arrowRight,
   xpLogo,
 };
 

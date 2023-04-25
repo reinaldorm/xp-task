@@ -57,8 +57,32 @@
 
 .navButtonAdd {
   background-color: #8f43ee;
+
+  &:global(.activeStep) {
+    z-index: 30;
+    box-shadow: 0px 0px 80px 0px #8f43ee;
+    animation: SHAKE 2s ease 0s infinite;
+  }
 }
 
 .navButtonFilter {
   background-color: #3e3e3e;
+}
+
+@keyframes SHAKE {
+  50% {
+    rotate: z 0deg;
+  }
+
+  60% {
+    rotate: z 10deg;
+  }
+
+  70% {
+    rotate: z -10deg;
+  }
+
+  80% {
+    rotate: z 0deg;
+  }
 }

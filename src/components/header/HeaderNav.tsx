@@ -1,12 +1,15 @@
 import React from 'react';
+import clsx from 'clsx';
 import { gsap } from 'gsap';
 import { useModal } from '../../context/modal/context';
+import { usePlayer } from '../../context/player/context';
 
 import styles from './styles/header.module.scss';
 import assets from '../../assets/sources';
 
 const HeaderNav = () => {
   const { toggleModal } = useModal();
+  const { player } = usePlayer();
 
   React.useEffect(() => {
     const tween = gsap.from('.navButton', {
@@ -26,22 +29,22 @@ const HeaderNav = () => {
     <nav className={styles.headerNav}>
       <button
         onClick={() => toggleModal(true)}
-        className={styles.navButtonAdd + ' navButton'}>
+        className={clsx([styles.navButtonAdd, 'navButton', player.tutorial.step === 0 && 'activeStep'])}>
         <img
           src={assets.plus}
-          alt="add-task"
+          alt='add-task'
         />
       </button>
-      <button className={styles.navButtonFilter + ' navButton'}>
+      <button className={clsx([styles.navButtonFilter, 'navButton'])}>
         <img
           src={assets.favorite}
-          alt="filter-favorite-tasks"
+          alt='filter-favorite-tasks'
         />
       </button>
-      <button className={styles.navButtonFilter + ' navButton'}>
+      <button className={clsx([styles.navButtonFilter, 'navButton'])}>
         <img
           src={assets.archive}
-          alt="filter-archive-tasks"
+          alt='filter-archive-tasks'
         />
       </button>
     </nav>

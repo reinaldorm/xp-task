@@ -59,9 +59,17 @@
   }
 }
 
-.modalTitleInput {
+.modalLabel {
   font: 600 1rem 'Montserrat';
   color: #111;
+  display: block;
+
+  margin-bottom: 0.5rem;
+}
+
+.modalTitleInput {
+  font: 600 1rem 'Montserrat';
+  color: #222;
   margin-bottom: 0.5rem;
 }
 

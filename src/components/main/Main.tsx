@@ -1,14 +1,16 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { usePlayer } from '../../context/player/context';
 import Header from '../header/Header';
+import Tasks from '../tasks/Tasks';
 import Level from '../level/Level';
 import Loading from '../loading/Loading';
-import Tasks from '../tasks/Tasks';
+import Tutorial from '../tutorial/Tutorial';
 
 import styles from './styles/main.module.scss';
 
 const Main = () => {
-  const { loading } = usePlayer();
+  const { player, loading } = usePlayer();
 
   return (
     <div className={styles.main}>
@@ -16,6 +18,7 @@ const Main = () => {
       <Header />
       <Tasks />
       <Level />
+      {player.tutorial.active && createPortal(<Tutorial />, document.body)}
     </div>
   );
 };

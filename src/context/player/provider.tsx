@@ -1,7 +1,7 @@
 import React from 'react';
 import { PlayerContext } from './context';
 
-import type { Player, Task } from '../../types';
+import type { Player, Tutorial } from '../../types';
 
 interface PlayerProviderProps {
   children: React.ReactNode;
@@ -14,6 +14,10 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
     xp: 0,
     max_xp: 1000,
     new: true,
+    tutorial: {
+      active: true,
+      step: 0,
+    },
     tasks: [],
   });
 
@@ -52,6 +56,15 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
     }
   }
 
+  function updateTutorialField(tutorial: Partial<Tutorial>) {
+    updatePlayerField({
+      tutorial: {
+        ...player.tutorial,
+        ...tutorial,
+      },
+    });
+  }
+
   function resetPlayer() {
     setLoading(true);
 
@@ -61,6 +74,10 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
         xp: 0,
         max_xp: 1000,
         new: true,
+        tutorial: {
+          step: 0,
+          active: false,
+        },
         tasks: [],
       };
 
@@ -72,6 +89,8 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
   }
 
   React.useEffect(() => {
+    setLoading(true);
+
     const player = localStorage.getItem('player');
 
     if (player) setPlayer(JSON.parse(player));
@@ -80,7 +99,8 @@ export const PlayerProvider = ({ children }: PlayerProviderProps) => {
   }, []);
 
   return (
-    <PlayerContext.Provider value={{ player, loading, updatePlayerXP, updatePlayerField, savePlayer, resetPlayer }}>
+    <PlayerContext.Provider
+      value={{ player, loading, updatePlayerXP, updatePlayerField, updateTutorialField, savePlayer, resetPlayer }}>
       {children}
     </PlayerContext.Provider>
   );

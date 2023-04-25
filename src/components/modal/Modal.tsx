@@ -59,6 +59,8 @@ const Modal = () => {
   }
 
   React.useEffect(() => {
+    titleInputRef.current?.focus();
+
     window.addEventListener('keyup', handleWindowKey);
 
     return () => {
@@ -66,9 +68,7 @@ const Modal = () => {
     };
   }, []);
 
-  React.useEffect(() => {
-    titleInputRef.current?.focus();
-  }, []);
+  React.useEffect(() => {}, []);
 
   return (
     <div
@@ -82,16 +82,30 @@ const Modal = () => {
         action="/"
         method="dialog">
         <div className={styles.modalForm}>
+          <label
+            className={styles.modalLabel}
+            htmlFor="task-title">
+            Titulo
+          </label>
           <input
-            placeholder="Titulo da tarefa."
+            id="task-title"
+            name="task-title"
+            placeholder="Insira o titulo da tarefa."
             type="text"
             value={name}
             className={styles.modalTitleInput}
             onChange={(i) => setName(i.currentTarget.value)}
             ref={titleInputRef}
           />
+          <label
+            className={styles.modalLabel}
+            htmlFor="task-description">
+            Descrição
+          </label>
           <input
-            placeholder="Descrição da tarefa."
+            id="task-description"
+            name="task-description"
+            placeholder="Insira a descrição da tarefa"
             type="text"
             value={description}
             className={styles.modalDescriptionInput}
